@@ -7,6 +7,8 @@ pub enum NodeResult {
     Running
 }
 
-pub trait Node {
+pub trait Node: Send + Sync {
     fn tick(&mut self, memory: &mut BlackBoard) -> NodeResult;
+    fn reset(&mut self);
+    fn get_name(&self) -> String;
 }

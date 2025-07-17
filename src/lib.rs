@@ -23,6 +23,13 @@ mod tests {
         fn tick(&mut self, _blackboard: &mut BlackBoard) -> NodeResult {
             self.result.clone()
         }
+
+        fn get_name(&self) -> String {
+            "IS_ENEMY".into()
+        }
+        fn reset(&mut self) {
+            
+        }
     }
 
     #[test]
