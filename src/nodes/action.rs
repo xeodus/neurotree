@@ -6,22 +6,20 @@ pub struct Action {
     pub name: String
 }
 
+impl Action {
+    pub fn new(name: String, action: fn(&mut BlackBoard) -> NodeResult) -> Self {
+        Self { action, name}
+    }
+}
+
 impl Node for Action {
     fn tick(&mut self, blackboard: &mut BlackBoard) -> NodeResult {
         (self.action)(blackboard)
     }
 
-    fn reset(&mut self) {
-        
-    }
+    fn reset(&mut self) { }
 
     fn get_name(&self) -> String {
         self.name.clone()
-    }
-}
-
-impl Action {
-    pub fn new(name: String, action: fn(&mut BlackBoard) -> NodeResult) -> Self {
-        Self { action, name}
     }
 }
